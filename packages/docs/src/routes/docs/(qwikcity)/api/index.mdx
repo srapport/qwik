@@ -172,6 +172,14 @@ The above code would generate:
 <p>skuId: 1234</p>
 ```
 
+### Using `useLocation` is not supported in `route.tsx`
+
+To access the current url from `route.tsx` use this pattern:
+```ts
+const serverDataUrl = useServerData<string>('url');
+const url = new URL(serverDataUrl || 'https://unknown');
+```
+
 > Notice that `useLocation` is a read-only API, you should never attempt to mutate the values of the `loc` object returned. Instead look into the `useNavigate()` API.
 
 ## `useNavigate()`
